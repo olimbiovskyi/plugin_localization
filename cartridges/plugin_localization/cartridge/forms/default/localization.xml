@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<form xmlns="http://www.demandware.com/xml/form/2008-04-19">
+    <field formid="country" label="localization.country" type="string" binding="countryCode">
+        <options optionid-binding="id" value-binding="value" label-binding="name" />
+    </field>
+    <field formid="language" label="localization.language" type="string" binding="language">
+        <options optionid-binding="id" value-binding="value" label-binding="name" />
+    </field>
+    <field formid="allLanguages" type="string" binding="allLanguages">
+        <options optionid-binding="id" value-binding="value" label-binding="name" />
+    </field>
+    <action formid="apply" valid-form="true" />
+</form>

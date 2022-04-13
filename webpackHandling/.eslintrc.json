@@ -1,0 +1,25 @@
+{
+    "extends": "airbnb-base",
+    "rules": {
+        "import/no-unresolved": "off",
+        "indent": ["error", 4, { "SwitchCase": 1, "VariableDeclarator": 1 }],
+        "func-names": "off",
+        "require-jsdoc": "error",
+        "valid-jsdoc": ["error", { "preferType": { "Boolean": "boolean", "Number": "number", "object": "Object", "String": "string" }, "requireReturn": false}],
+        "vars-on-top": "off",
+        "global-require": "off",
+        "no-shadow": ["error", { "allow": ["err", "callback"]}],
+        "max-len": "off",
+        "no-param-reassign": ["error", { "props": false }],
+        "import/no-named-default": "off",
+        "import/first": "off",
+        "import/no-webpack-loader-syntax": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-dynamic-require": "off",
+        "comma-dangle": "off"
+    },
+    "globals" : {
+        "it": true,
+        "describe": true
+    }
+}

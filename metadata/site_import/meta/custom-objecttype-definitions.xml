@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <custom-type type-id="CountryConfig">
+        <display-name xml:lang="x-default">Country Configuration</display-name>
+        <description xml:lang="x-default">Object for localization settings</description>
+        <staging-mode>source-to-target</staging-mode>
+        <storage-scope>organization</storage-scope>
+        <key-definition attribute-id="countryCode">
+            <type>string</type>
+            <min-length>0</min-length>
+        </key-definition>
+        <attribute-definitions>
+            <attribute-definition attribute-id="currencyCode">
+                <display-name xml:lang="x-default">Currency Code</display-name>
+                <description xml:lang="x-default">The currency code on the site</description>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="hostName">
+                <display-name xml:lang="x-default">Host Name</display-name>
+                <description xml:lang="x-default">Host name on the site</description>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="locales">
+                <display-name xml:lang="x-default">Locales</display-name>
+                <description xml:lang="x-default">The list of available locales on the site</description>
+                <type>set-of-string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="name">
+                <display-name xml:lang="x-default">Name</display-name>
+                <description xml:lang="x-default">The name of the country</description>
+                <type>string</type>
+                <localizable-flag>true</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+            <attribute-definition attribute-id="priceBooks">
+                <display-name xml:lang="x-default">Price Books</display-name>
+                <description xml:lang="x-default">The list of price books available on the site</description>
+                <type>set-of-string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+            <attribute-definition attribute-id="redirectURL">
+                <display-name xml:lang="x-default">Redirect URL</display-name>
+                <description xml:lang="x-default">Link to another site (used for compatibility with other sites)</description>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+                <regex>^https?://[^/@]*\.domain\.com(/.*)?$</regex>
+            </attribute-definition>
+            <attribute-definition attribute-id="siteID">
+                <display-name xml:lang="x-default">Site ID</display-name>
+                <description xml:lang="x-default">The site to which the locale is bound</description>
+                <type>string</type>
+                <localizable-flag>false</localizable-flag>
+                <mandatory-flag>true</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <min-length>0</min-length>
+            </attribute-definition>
+        </attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Configurations">
+                <display-name xml:lang="x-default">Configurations</display-name>
+                <attribute attribute-id="countryCode"/>
+                <attribute attribute-id="name"/>
+                <attribute attribute-id="siteID"/>
+                <attribute attribute-id="locales"/>
+                <attribute attribute-id="currencyCode"/>
+                <attribute attribute-id="priceBooks"/>
+                <attribute attribute-id="hostName"/>
+                <attribute attribute-id="redirectURL"/>
+            </attribute-group>
+        </group-definitions>
+    </custom-type>
+</metadata>

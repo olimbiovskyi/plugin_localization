@@ -1,0 +1,29 @@
+{
+    "name": "plugin_localization",
+    "version": "0.0.1",
+    "description": "Localization plugin for SFRA",
+    "main": "index.js",
+    "scripts": {
+        "sfra:init": "cd node_modules/sfra && npm install && npm run compile:js && npm run compile:scss && npm run compile:fonts",
+        "sfra:copy-linux": "rsync -ar ./node_modules/sfra/cartridges/ ./cartridges/",
+        "sfra:copy-windows": "xcopy .\\node_modules\\sfra\\cartridges\\ .\\cartridges\\ /e",
+        "lint:js": "eslint . --no-error-on-unmatched-pattern",
+        "webpack:watch": "webpack --config ./node_modules/sfra-webpack-builder/webpack.config.js --env dev --watch",
+        "webpack:dev": "webpack --config ./node_modules/sfra-webpack-builder/webpack.config.js --env dev",
+        "webpack:prod": "webpack --config ./node_modules/sfra-webpack-builder/webpack.config.js"
+    },
+    "dependencies": {
+        "cross-zip-cli": "^1.0.0",
+        "sfcc-ci": "^2.9.1",
+        "sfra": "git+ssh://git@github.com/SalesforceCommerceCloud/storefront-reference-architecture.git#v6.0.0",
+        "sfra-webpack-builder": "git+ssh://git@github.com/SalesforceCommerceCloud/sfra-webpack-builder.git#feature/webpack-builder-as-project-dependency",
+        "shx": "^0.3.2"
+    },
+    "devDependencies": {
+        "eslint": "^6.5.1",
+        "eslint-config-airbnb-base": "12.0.0",
+        "eslint-plugin-import": "^1.12.0",
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.12"
+    }
+}

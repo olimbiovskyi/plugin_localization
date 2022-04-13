@@ -1,0 +1,97 @@
+<div class="modal show js-country-change-wrapper" aria-modal="true" role="dialog" style="display: block">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    ${Resource.msg('localization.modal.header', 'locale', '')}
+                </h4>
+                <button type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="${URLUtils.https('Page-SetLocale')}"
+                    class="js-localization-form country-form"
+                    method="POST"
+                >
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label">
+                                ${Resource.msg('localization.country', 'forms', null)}
+                            </label>
+                            <select type="text"
+                                class="form-control required js-country-select"
+                                required
+                                <isprint value="${pdict.forms.localization.country.attributes}" encoding="off" />
+                            >
+                                <isloop items="${pdict.forms.localization.country.options}" var="country">
+                                    <option
+                                        id="${country.id}"
+                                        value="${country.htmlValue}"
+                                        ${pdict.forms.localization.country.htmlValue == country.htmlValue ? 'selected' : ''}
+                                    >
+                                        <isprint value="${country.label}" />
+                                    </option>
+                                </isloop>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label">
+                                ${Resource.msg('localization.language', 'forms', null)}
+                            </label>
+                            <select type="text"
+                                class="form-control required js-language-select"
+                                required
+                                <isprint value="${pdict.forms.localization.language.attributes}" encoding="off" />
+                            >
+                                <isloop items="${pdict.forms.localization.language.options}" var="language">
+                                    <option
+                                        id="${language.id}"
+                                        value="${language.htmlValue}"
+                                        ${pdict.forms.localization.language.htmlValue == language.htmlValue ? 'selected' : ''}
+                                    >
+                                        <isprint value="${language.label}" />
+                                    </option>
+                                </isloop>
+                            </select>
+                        </div>
+                    </div>
+
+                    <select type="select"
+                        class="form-control d-none js-all-languages-select"
+                        <isprint value="${pdict.forms.localization.allLanguages.attributes}" encoding="off" />
+                    >
+                        <isloop items="${pdict.forms.localization.allLanguages.options}" var="language">
+                            <option
+                                id="${language.id}"
+                                value="${language.htmlValue}"
+                                data-country="${language.id}"
+                                ${pdict.forms.localization.language.htmlValue == language.htmlValue ? 'selected' : ''}
+                            >
+                                <isprint value="${language.label}" />
+                            </option>
+                        </isloop>
+                    </select>
+
+                    <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
+
+                    <button
+                        type="submit"
+                        name="save"
+                        class="decline btn btn-primary"
+                    >
+                        ${Resource.msg('localization.modal.btn.change', 'locale', null)}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

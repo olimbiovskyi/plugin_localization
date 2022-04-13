@@ -10,7 +10,7 @@
             </attribute-definition>
             <attribute-definition attribute-id="isRedirectToCustomerLocale">
                 <display-name xml:lang="x-default">Redirect to customer's locale</display-name>
-				<description xml:lang="x-default">Return a customer to the saved/geolocated country on session hook</description>
+                <description xml:lang="x-default">Return a customer to the saved/geolocated country on session hook</description>
                 <type>boolean</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
@@ -20,9 +20,9 @@
         <group-definitions>
             <attribute-group group-id="Localization">
                 <display-name xml:lang="x-default">Localization Settings</display-name>
-                <attribute attribute-id="isRedirectToCustomerLocale"/>
-                <attribute attribute-id="inboundRequestWhitelist"/>
+                <attribute attribute-id="isRedirectToCustomerLocale" />
+                <attribute attribute-id="inboundRequestWhitelist" />
             </attribute-group>
         </group-definitions>
-	</type-extension>
+    </type-extension>
 </metadata>

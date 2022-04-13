@@ -13,7 +13,7 @@
         <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
     </custom-object>
 
-	<custom-object type-id="CountryConfig" object-id="JP">
+    <custom-object type-id="CountryConfig" object-id="JP">
         <object-attribute attribute-id="currencyCode">JPY</object-attribute>
         <object-attribute attribute-id="locales">
             <value>ja_JP</value>
@@ -26,7 +26,7 @@
         <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
     </custom-object>
 
-	<custom-object type-id="CountryConfig" object-id="CN">
+    <custom-object type-id="CountryConfig" object-id="CN">
         <object-attribute attribute-id="currencyCode">CNY</object-attribute>
         <object-attribute attribute-id="locales">
             <value>zh_CN</value>

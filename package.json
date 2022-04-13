@@ -1,29 +1,36 @@
 {
-    "name": "plugin_localization",
-    "version": "0.0.1",
-    "description": "Localization plugin for SFRA",
-    "main": "index.js",
-    "scripts": {
-        "sfra:init": "cd node_modules/sfra && npm install && npm run compile:js && npm run compile:scss && npm run compile:fonts",
-        "sfra:copy-linux": "rsync -ar ./node_modules/sfra/cartridges/ ./cartridges/",
-        "sfra:copy-windows": "xcopy .\\node_modules\\sfra\\cartridges\\ .\\cartridges\\ /e",
-        "lint:js": "eslint . --no-error-on-unmatched-pattern",
-        "webpack:watch": "webpack --config ./node_modules/sfra-webpack-builder/webpack.config.js --env dev --watch",
-        "webpack:dev": "webpack --config ./node_modules/sfra-webpack-builder/webpack.config.js --env dev",
-        "webpack:prod": "webpack --config ./node_modules/sfra-webpack-builder/webpack.config.js"
-    },
-    "dependencies": {
-        "cross-zip-cli": "^1.0.0",
-        "sfcc-ci": "^2.9.1",
-        "sfra": "git+ssh://git@github.com/SalesforceCommerceCloud/storefront-reference-architecture.git#v6.0.0",
-        "sfra-webpack-builder": "git+ssh://git@github.com/SalesforceCommerceCloud/sfra-webpack-builder.git#feature/webpack-builder-as-project-dependency",
-        "shx": "^0.3.2"
-    },
-    "devDependencies": {
-        "eslint": "^6.5.1",
-        "eslint-config-airbnb-base": "12.0.0",
-        "eslint-plugin-import": "^1.12.0",
-        "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.12"
-    }
+  "name": "plugin_localization",
+  "version": "0.0.1",
+  "description": "Localization plugin for SFRA",
+  "private": "true",
+  "scripts": {
+    "lint": "sgmf-scripts --lint js && sgmf-scripts --lint css",
+    "upload": "sgmf-scripts --upload",
+    "uploadCartridge": "sgmf-scripts --uploadCartridge plugin_localization",
+    "compile:js": "sgmf-scripts --compile js",
+    "compile:scss": "sgmf-scripts --compile css",
+    "watch": "sgmf-scripts --watch",
+    "build": "npm run compile:js && npm run compile:scss"
+  },
+  "paths": {
+    "base": "../storefront-reference-architecture/cartridges/app_storefront_base/"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.6.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^0.28.11",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^5.0.3",
+    "eslint-plugin-import": "^1.16.0",
+    "node-sass": "^4.12.0",
+    "postcss-loader": "^2.1.6",
+    "sass-loader": "^7.3.1",
+    "sgmf-scripts": "^2.3.0",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-scss": "^2.5.0"
+  }
 }

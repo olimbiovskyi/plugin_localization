@@ -76,14 +76,14 @@
         <group-definitions>
             <attribute-group group-id="Configurations">
                 <display-name xml:lang="x-default">Configurations</display-name>
-                <attribute attribute-id="countryCode"/>
-                <attribute attribute-id="name"/>
-                <attribute attribute-id="siteID"/>
-                <attribute attribute-id="locales"/>
-                <attribute attribute-id="currencyCode"/>
-                <attribute attribute-id="priceBooks"/>
-                <attribute attribute-id="hostName"/>
-                <attribute attribute-id="redirectURL"/>
+                <attribute attribute-id="countryCode" />
+                <attribute attribute-id="name" />
+                <attribute attribute-id="siteID" />
+                <attribute attribute-id="locales" />
+                <attribute attribute-id="currencyCode" />
+                <attribute attribute-id="priceBooks" />
+                <attribute attribute-id="hostName" />
+                <attribute attribute-id="redirectURL" />
             </attribute-group>
         </group-definitions>
     </custom-type>

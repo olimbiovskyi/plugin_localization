@@ -29,6 +29,15 @@ module.exports = [
             path: path.resolve('./cartridges/plugin_localization/cartridge/static'),
             filename: '[name].js'
         },
+        resolve: {
+            alias: {
+                jquery: require.resolve('jquery', {
+                    paths: [
+                        path.resolve(__dirname, '..', 'storefront-reference-architecture')
+                    ]
+                })
+            }
+        },
         module: {
             rules: [
                 {

@@ -1,0 +1,34 @@
+{
+    "root": true,
+    "extends": "airbnb-base/legacy",
+    "rules": {
+        "import/no-unresolved": "off",
+        "no-use-before-define": "off",
+        "no-plusplus": "off",
+        "indent": ["error", 4, { "SwitchCase": 1, "VariableDeclarator": 1 }],
+        "func-names": "off",
+        "require-jsdoc": "error",
+        "valid-jsdoc": ["error", { "preferType": { "Boolean": "boolean", "Number": "number", "object": "Object", "String": "string" }, "requireReturn": false}],
+        "vars-on-top": "off",
+        "global-require": "off",
+        "no-shadow": ["error", { "allow": ["err", "callback"]}],
+        "max-len": "off",
+        "operator-linebreak": "error",
+        "no-else-return": "error",
+        "no-param-reassign": ["error", { "props": false }],
+        "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1, "maxBOF": 1 } ]
+    },
+    "globals" : {
+      "session": true,
+      "request": true,
+      "response": true,
+      "customer": true,
+      "empty": true,
+      "webreferences": true,
+      "webreferences2": true,
+      "PIPELET_NEXT": true,
+      "PIPELET_ERROR": true,
+      "XML": true,
+      "dw": true
+    }
+}

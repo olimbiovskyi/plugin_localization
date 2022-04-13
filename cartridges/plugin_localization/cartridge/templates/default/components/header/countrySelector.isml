@@ -1,0 +1,9 @@
+<div class="dropdown country-selector js-change-country"
+    data-url="${URLUtils.url('Page-GetLocalizationForm')}"
+    tabindex="0"
+>
+    <span>
+        <i class="flag-icon flag-icon-${pdict.locale.countryCode.toLowerCase()}"></i>
+        ${pdict.locale.displayCountry} (${pdict.locale.displayLanguage})
+    </span>
+</div>

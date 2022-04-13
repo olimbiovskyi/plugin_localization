@@ -1,0 +1,7 @@
+node_modules/
+cartridges/modules
+cartridges/app_storefront_base
+cartridges/bm_app_storefront_base
+cartridges/plugin_localization/cartridge/static
+.vscode
+dw.json

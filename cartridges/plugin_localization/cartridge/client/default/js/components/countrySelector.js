@@ -4,7 +4,6 @@ module.exports = {
     showLocalizationModal: function () {
         $(document).on('click', '.js-change-country', function (e) {
             e.preventDefault();
-
             $.spinner().start();
 
             var $this = $(this);
@@ -13,10 +12,10 @@ module.exports = {
                 url: $this.data('url'),
                 method: 'GET',
                 success: function (response) {
-                    var $countryChangeWrapper = $('.js-country-change-wrapper');
+                    var $countryChangeModal = $('.js-country-change-modal');
 
-                    if ($countryChangeWrapper.length) {
-                        $countryChangeWrapper.remove();
+                    if ($countryChangeModal.length) {
+                        $countryChangeModal.remove();
                     }
 
                     $('body').append(response);
@@ -29,18 +28,17 @@ module.exports = {
     },
 
     hideLocalizationModal: function () {
-        $(document).on('click', '.js-country-change-wrapper button.close', function () {
-            $(this).parents('.js-country-change-wrapper').addClass('d-none');
+        $(document).on('click', '.js-country-change-modal button.close', function () {
+            $(this).parents('.js-country-change-modal').addClass('d-none');
         });
     },
 
     handleCountryChange: function () {
         $(document).on('change', '.js-country-select', function () {
             var $this = $(this);
-            var $wrapper = $this.parents('.js-country-change-wrapper');
-            var $languageSelect = $wrapper.find('.js-language-select');
-            var $allLanguagesSelect = $wrapper.find('.js-all-languages-select');
-
+            var $modal = $this.parents('.js-country-change-modal');
+            var $languageSelect = $modal.find('.js-language-select');
+            var $allLanguagesSelect = $modal.find('.js-all-languages-select');
             var countryCode = $this.val();
             var $languageOptions = $allLanguagesSelect.find('option[data-country=' + countryCode + ']');
 
@@ -59,9 +57,7 @@ module.exports = {
             data.push({
                 name: 'action',
                 value: $page.data('action')
-            });
-
-            data.push({
+            }, {
                 name: 'queryString',
                 value: $page.data('querystring')
             });
@@ -73,7 +69,7 @@ module.exports = {
                 method: 'POST',
                 data: data,
                 success: function (response) {
-                    if (response.success) {
+                    if (response.redirectUrl) {
                         window.location.href = response.redirectUrl;
                     }
                 },

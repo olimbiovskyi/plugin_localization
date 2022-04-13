@@ -11,6 +11,7 @@ function getHttpAction() {
 }
 
 /**
+ * @description creates a localized URL
  * @param {Object} params - params object
  * @param {string} params.action - action
  * @param {string} params.siteID - site ID
@@ -46,13 +47,16 @@ function getRedirectUrl(params) {
 
     var redirectURL = URLUtils.abs.apply(URLUtils, urlParams);
     var isDifferentHostName = request.httpHost !== hostName;
+    var isSameSite = siteID === session.custom.selectedSite;
 
-    if (isDifferentHostName && (siteID === session.custom.selectedSite)) {
+    if (isDifferentHostName && isSameSite) {
         redirectURL = URLUtils.sessionRedirect(hostName, redirectURL);
     }
 
     return redirectURL;
 }
 
-module.exports.getHttpAction = getHttpAction;
-module.exports.getRedirectUrl = getRedirectUrl;
+module.exports = {
+    getHttpAction: getHttpAction,
+    getRedirectUrl: getRedirectUrl
+};

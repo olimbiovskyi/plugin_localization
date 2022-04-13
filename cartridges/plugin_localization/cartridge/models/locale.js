@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Represents locale information
+ * @description Represents locale information
  * @param {dw.util.Locale} locale - locale
  * @constructor
  */
@@ -26,12 +26,13 @@ function LocaleModel(locale) {
 /**
  * @static
  * @param {string} countryCode - country code
- * @constructor
+ * @returns {Object} country configuration
  */
 LocaleModel.getCountryConfig = function (countryCode) {
     var countriesConfig = require('*/cartridge/config/countries');
+    var array = require('*/cartridge/scripts/util/array');
 
-    return countriesConfig.find(function (countryConfig) {
+    return array.find(countriesConfig, function (countryConfig) {
         return countryConfig.countryCode === countryCode;
     });
 };

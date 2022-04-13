@@ -17,7 +17,7 @@ function isSystemRequest() {
 function onRequest() {
     var Status = require('dw/system/Status');
 
-    if (request.custom.onRequestIgnore || request.includeRequest || isSystemRequest()) {
+    if (request.includeRequest || isSystemRequest() || request.custom.onRequestIgnore) {
         return new Status(Status.OK);
     }
 
@@ -28,4 +28,6 @@ function onRequest() {
     return new Status(Status.OK);
 }
 
-exports.onRequest = onRequest;
+module.exports = {
+    onRequest: onRequest
+};

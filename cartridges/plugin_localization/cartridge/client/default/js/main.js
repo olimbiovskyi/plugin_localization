@@ -1,7 +1,10 @@
-window.jQuery = window.$ = require('jquery');
+'use strict';
+
 var processInclude = require('base/util');
 
-$(document).ready(function () {
+window.jQuery = window.$ = require('jquery');
+
+$(function () {
     processInclude(require('base/components/menu'));
     processInclude(require('base/components/cookie'));
     processInclude(require('base/components/consentTracking'));

@@ -55,4 +55,6 @@ function onSession() {
     return new Status(Status.OK);
 }
 
-exports.onSession = onSession;
+module.exports = {
+    onSession: onSession
+};

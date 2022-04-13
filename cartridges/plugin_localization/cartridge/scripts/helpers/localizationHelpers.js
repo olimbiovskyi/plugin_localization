@@ -37,7 +37,6 @@ function applyPreferences(params) {
 
 /**
  * @description session attrbites help to create dynamic customer groups
- *
  * @param {Object} params - params object
  * @param {string} params.country - country
  * @param {string} params.locale - locale
@@ -84,7 +83,7 @@ function setLocalizationPreferences() {
 
 /**
  * @description populate localization form
- * @param {Oject} form - localization form
+ * @param {Oject} form - session form
  */
 function fillCountriesOptions(form) {
     var Locale = require('dw/util/Locale');

@@ -37,10 +37,12 @@ function getRedirectUrl(params) {
 
     urlParams.push(urlAction);
 
+    var parametersToRemove = Site.current.getCustomPreferenceValue('csRemoveParameterNames');
+
     (queryString || '').split('&').forEach(function (pair) {
         var parts = pair.split('=');
 
-        if (parts[0] !== 'lang') {
+        if (parametersToRemove.indexOf(parts[0]) === -1) {
             urlParams.push(new URLParameter(parts[0], Encoding.fromURI(parts[1])));
         }
     });

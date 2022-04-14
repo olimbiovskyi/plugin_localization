@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <custom-objects xmlns="http://www.demandware.com/xml/impex/customobject/2006-10-31">
     <custom-object type-id="CountryConfig" object-id="GB">
-        <object-attribute attribute-id="currencyCode">GBP</object-attribute>
+        <object-attribute attribute-id="currencies">
+            <value>GBP</value>
+        </object-attribute>
         <object-attribute attribute-id="locales">
             <value>en_GB</value>
         </object-attribute>
@@ -13,34 +15,10 @@
         <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
     </custom-object>
 
-    <custom-object type-id="CountryConfig" object-id="JP">
-        <object-attribute attribute-id="currencyCode">JPY</object-attribute>
-        <object-attribute attribute-id="locales">
-            <value>ja_JP</value>
-        </object-attribute>
-        <object-attribute attribute-id="name" xml:lang="x-default">Japan</object-attribute>
-        <object-attribute attribute-id="priceBooks">
-            <value>jpy-m-list-prices</value>
-            <value>jpy-m-sale-prices</value>
-        </object-attribute>
-        <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
-    </custom-object>
-
-    <custom-object type-id="CountryConfig" object-id="CN">
-        <object-attribute attribute-id="currencyCode">CNY</object-attribute>
-        <object-attribute attribute-id="locales">
-            <value>zh_CN</value>
-        </object-attribute>
-        <object-attribute attribute-id="name" xml:lang="x-default">China</object-attribute>
-        <object-attribute attribute-id="priceBooks">
-            <value>cny-m-list-prices</value>
-            <value>cny-m-sale-prices</value>
-        </object-attribute>
-        <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
-    </custom-object>
-
     <custom-object type-id="CountryConfig" object-id="FR">
-        <object-attribute attribute-id="currencyCode">EUR</object-attribute>
+        <object-attribute attribute-id="currencies">
+            <value>EUR</value>
+        </object-attribute>
         <object-attribute attribute-id="locales">
             <value>fr_FR</value>
         </object-attribute>
@@ -53,7 +31,9 @@
     </custom-object>
 
     <custom-object type-id="CountryConfig" object-id="IT">
-        <object-attribute attribute-id="currencyCode">EUR</object-attribute>
+        <object-attribute attribute-id="currencies">
+            <value>EUR</value>
+        </object-attribute>
         <object-attribute attribute-id="locales">
             <value>it_IT</value>
         </object-attribute>
@@ -61,6 +41,36 @@
         <object-attribute attribute-id="priceBooks">
             <value>eur-m-list-prices</value>
             <value>eur-m-sale-prices</value>
+        </object-attribute>
+        <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
+    </custom-object>
+
+    <custom-object type-id="CountryConfig" object-id="CN">
+        <object-attribute attribute-id="currencies">
+            <value>CNY</value>
+        </object-attribute>
+        <object-attribute attribute-id="locales">
+            <value>zh_CN</value>
+        </object-attribute>
+        <object-attribute attribute-id="name" xml:lang="x-default">China</object-attribute>
+        <object-attribute attribute-id="priceBooks">
+            <value>cny-m-list-prices</value>
+            <value>cny-m-sale-prices</value>
+        </object-attribute>
+        <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
+    </custom-object>
+
+    <custom-object type-id="CountryConfig" object-id="JP">
+        <object-attribute attribute-id="currencies">
+            <value>JPY</value>
+        </object-attribute>
+        <object-attribute attribute-id="locales">
+            <value>ja_JP</value>
+        </object-attribute>
+        <object-attribute attribute-id="name" xml:lang="x-default">Japan</object-attribute>
+        <object-attribute attribute-id="priceBooks">
+            <value>jpy-m-list-prices</value>
+            <value>jpy-m-sale-prices</value>
         </object-attribute>
         <object-attribute attribute-id="siteID">RefArchGlobal</object-attribute>
     </custom-object>

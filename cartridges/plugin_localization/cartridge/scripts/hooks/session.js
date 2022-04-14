@@ -9,14 +9,14 @@ function onSession() {
     var Site = require('dw/system/Site');
     var Status = require('dw/system/Status');
 
-    if (!Site.current.getCustomPreferenceValue('isRedirectToCustomerLocale')) {
+    if (!Site.current.getCustomPreferenceValue('csIsRedirectToCustomerLocale')) {
         return new Status(Status.OK);
     }
 
     var requestHelpers = require('*/cartridge/scripts/helpers/requestHelpers');
     var httpAction = requestHelpers.getHttpAction();
 
-    if (Site.current.getCustomPreferenceValue('inboundRequestWhitelist').indexOf(httpAction) > -1) {
+    if (Site.current.getCustomPreferenceValue('csInboundRequestWhitelist').indexOf(httpAction) > -1) {
         request.custom.onRequestIgnore = true;
 
         return new Status(Status.OK);
@@ -26,6 +26,11 @@ function onSession() {
     var cookie = require('*/cartridge/scripts/util/cookie');
 
     var countryCode = cookie.getCookie('selectedCountry');
+    var currencyCode = cookie.getCookie('selectedCurrency');
+
+    if (currencyCode) {
+        session.custom.selectedCurrency = currencyCode;
+    }
 
     if (!countryCode) {
         countryCode = request.geolocation.countryCode;

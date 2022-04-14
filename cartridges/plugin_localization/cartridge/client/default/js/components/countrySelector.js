@@ -55,11 +55,18 @@ module.exports = {
             var $this = $(this);
             var $modal = $this.parents('.js-country-change-modal');
             var $languageSelect = $modal.find('.js-language-select');
+            var $currencySelect = $modal.find('.js-currency-select');
             var $allLanguagesSelect = $modal.find('.js-all-languages-select');
+            var $allCurrenciesSelect = $modal.find('.js-all-currencies-select');
             var countryCode = $this.val();
             var $languageOptions = $allLanguagesSelect.find('option[data-country=' + countryCode + ']');
+            var $currencyOptions = $allCurrenciesSelect.find('option[data-country=' + countryCode + ']');
 
-            $languageSelect.html($languageOptions.clone());
+            $languageSelect.html($languageOptions.clone())
+                .attr('disabled', $languageOptions.length === 1);
+
+            $currencySelect.html($currencyOptions.clone())
+                .attr('disabled', $currencyOptions.length === 1);
         });
     },
 

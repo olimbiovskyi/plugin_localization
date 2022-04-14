@@ -57,6 +57,7 @@
                             <select type="text"
                                 class="form-control required js-language-select"
                                 required
+                                ${Number(pdict.forms.localization.language.options.length) === 1 ? 'disabled': ''}
                                 <isprint value="${pdict.forms.localization.language.attributes}" encoding="off" />
                             >
                                 <isloop items="${pdict.forms.localization.language.options}" var="language">
@@ -72,6 +73,30 @@
                         </div>
                     </div>
 
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="form-control-label">
+                                ${Resource.msg('localization.currency', 'forms', null)}
+                            </label>
+                            <select type="text"
+                                class="form-control required js-currency-select"
+                                required
+                                ${Number(pdict.forms.localization.currency.options.length) === 1 ? 'disabled': ''}
+                                <isprint value="${pdict.forms.localization.currency.attributes}" encoding="off" />
+                            >
+                                <isloop items="${pdict.forms.localization.currency.options}" var="currency">
+                                    <option
+                                        id="${currency.id}"
+                                        value="${currency.htmlValue}"
+                                        ${pdict.forms.localization.currency.htmlValue == currency.htmlValue ? 'selected' : ''}
+                                    >
+                                        <isprint value="${currency.label}" />
+                                    </option>
+                                </isloop>
+                            </select>
+                        </div>
+                    </div>
+
                     <select type="select"
                         class="form-control d-none js-all-languages-select"
                         <isprint value="${pdict.forms.localization.allLanguages.attributes}" encoding="off" />
@@ -81,9 +106,23 @@
                                 id="${language.id}"
                                 value="${language.htmlValue}"
                                 data-country="${language.id}"
-                                ${pdict.forms.localization.language.htmlValue == language.htmlValue ? 'selected' : ''}
                             >
                                 <isprint value="${language.label}" />
+                            </option>
+                        </isloop>
+                    </select>
+
+                    <select type="select"
+                        class="form-control d-none js-all-currencies-select"
+                        <isprint value="${pdict.forms.localization.allCurrencies.attributes}" encoding="off" />
+                    >
+                        <isloop items="${pdict.forms.localization.allCurrencies.options}" var="currency">
+                            <option
+                                id="${currency.id}"
+                                value="${currency.htmlValue}"
+                                data-country="${currency.id}"
+                            >
+                                <isprint value="${currency.label}" />
                             </option>
                         </isloop>
                     </select>

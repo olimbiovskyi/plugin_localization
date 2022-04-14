@@ -6,18 +6,18 @@
         <staging-mode>source-to-target</staging-mode>
         <storage-scope>organization</storage-scope>
         <key-definition attribute-id="countryCode">
+            <display-name xml:lang="x-default">Country Code</display-name>
             <type>string</type>
             <min-length>0</min-length>
         </key-definition>
         <attribute-definitions>
-            <attribute-definition attribute-id="currencyCode">
-                <display-name xml:lang="x-default">Currency Code</display-name>
-                <description xml:lang="x-default">The currency code on the site</description>
-                <type>string</type>
+            <attribute-definition attribute-id="currencies">
+                <display-name xml:lang="x-default">Currencies</display-name>
+                <description xml:lang="x-default">The list of available currencies on the site</description>
+                <type>set-of-string</type>
                 <localizable-flag>false</localizable-flag>
-                <mandatory-flag>true</mandatory-flag>
+                <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
-                <min-length>0</min-length>
             </attribute-definition>
             <attribute-definition attribute-id="hostName">
                 <display-name xml:lang="x-default">Host Name</display-name>
@@ -76,14 +76,14 @@
         <group-definitions>
             <attribute-group group-id="Configurations">
                 <display-name xml:lang="x-default">Configurations</display-name>
-                <attribute attribute-id="countryCode" />
-                <attribute attribute-id="name" />
-                <attribute attribute-id="siteID" />
-                <attribute attribute-id="locales" />
-                <attribute attribute-id="currencyCode" />
-                <attribute attribute-id="priceBooks" />
-                <attribute attribute-id="hostName" />
-                <attribute attribute-id="redirectURL" />
+                <attribute attribute-id="countryCode"/>
+                <attribute attribute-id="name"/>
+                <attribute attribute-id="siteID"/>
+                <attribute attribute-id="locales"/>
+                <attribute attribute-id="priceBooks"/>
+                <attribute attribute-id="currencies"/>
+                <attribute attribute-id="hostName"/>
+                <attribute attribute-id="redirectURL"/>
             </attribute-group>
         </group-definitions>
     </custom-type>

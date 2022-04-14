@@ -20,7 +20,7 @@ function getCountriesConfig() {
             countryCode: country.custom.countryCode,
             name: country.custom.name,
             siteID: country.custom.siteID,
-            currencyCode: country.custom.currencyCode,
+            currencies: [].slice.apply(country.custom.currencies),
             locales: [].slice.apply(country.custom.locales),
             priceBooks: [].slice.apply(country.custom.priceBooks),
             hostName: country.custom.hostName || '',

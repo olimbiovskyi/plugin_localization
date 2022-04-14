@@ -6,7 +6,13 @@
     <field formid="language" label="localization.language" type="string" binding="language">
         <options optionid-binding="id" value-binding="value" label-binding="name" />
     </field>
+    <field formid="currency" label="localization.currency" type="string" binding="currency">
+        <options optionid-binding="id" value-binding="value" label-binding="name" />
+    </field>
     <field formid="allLanguages" type="string" binding="allLanguages">
+        <options optionid-binding="id" value-binding="value" label-binding="name" />
+    </field>
+    <field formid="allCurrencies" type="string" binding="allCurrencies">
         <options optionid-binding="id" value-binding="value" label-binding="name" />
     </field>
     <action formid="apply" valid-form="true" />

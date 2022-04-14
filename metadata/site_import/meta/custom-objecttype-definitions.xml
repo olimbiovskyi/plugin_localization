@@ -47,7 +47,7 @@
             </attribute-definition>
             <attribute-definition attribute-id="priceBooks">
                 <display-name xml:lang="x-default">Price Books</display-name>
-                <description xml:lang="x-default">The list of price books available on the site</description>
+                <description xml:lang="x-default">The list of applicable price books</description>
                 <type>set-of-string</type>
                 <localizable-flag>false</localizable-flag>
                 <mandatory-flag>true</mandatory-flag>

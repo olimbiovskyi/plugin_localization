@@ -36,8 +36,9 @@ node_modules/
 Thumbs.db
 Thumbs.db:encryptable
 
-# VS Code
+# IDE
 .vscode
+.idea
 
 # SFCC files
 cartridges/*/cartridge/static/

@@ -5,7 +5,10 @@ var webpack = require('sgmf-scripts').webpack;
 var ExtractTextPlugin = require('sgmf-scripts')['extract-text-webpack-plugin'];
 var jsFiles = require('sgmf-scripts').createJsPath();
 var scssFiles = require('sgmf-scripts').createScssPath();
+var pkg = require('./package.json');
 
+var sfraBase = pkg.paths.base;
+var sfraPath = path.resolve(__dirname, sfraBase.replace('/cartridges/app_storefront_base', ''));
 var bootstrapPackages = {
     Alert: 'exports-loader?Alert!bootstrap/js/src/alert',
     // Button: 'exports-loader?Button!bootstrap/js/src/button',
@@ -31,11 +34,9 @@ module.exports = [
         },
         resolve: {
             alias: {
-                jquery: require.resolve('jquery', {
-                    paths: [
-                        path.resolve(__dirname, '..', 'storefront-reference-architecture')
-                    ]
-                })
+                jquery: path.resolve(sfraPath, 'node_modules/jquery'),
+                bootstrap: path.resolve(sfraPath, 'node_modules/bootstrap'),
+                lodash: path.resolve(sfraPath, 'node_modules/lodash')
             }
         },
         module: {
@@ -53,7 +54,9 @@ module.exports = [
                 }
             ]
         },
-        plugins: [new webpack.ProvidePlugin(bootstrapPackages)]
+        plugins: [
+            new webpack.ProvidePlugin(bootstrapPackages)
+        ]
     },
     {
         mode: 'none',
@@ -67,28 +70,32 @@ module.exports = [
             rules: [{
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
-                    use: [{
-                        loader: 'css-loader',
-                        options: {
-                            url: false,
-                            minimize: true
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                url: false,
+                                minimize: true
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                plugins: [
+                                    require('autoprefixer')()
+                                ]
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                includePaths: [
+                                    path.resolve(sfraPath, 'node_modules/'),
+                                    path.resolve(sfraPath, 'node_modules/flag-icon-css/sass')
+                                ]
+                            }
                         }
-                    }, {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: [
-                                require('autoprefixer')()
-                            ]
-                        }
-                    }, {
-                        loader: 'sass-loader',
-                        options: {
-                            includePaths: [
-                                path.resolve(process.cwd(), '../storefront-reference-architecture/node_modules/'),
-                                path.resolve(process.cwd(), '../storefront-reference-architecture/node_modules/flag-icon-css/sass')
-                            ]
-                        }
-                    }]
+                    ]
                 })
             }]
         },

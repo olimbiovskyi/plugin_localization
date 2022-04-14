@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * Get current http action
  * @returns {string} http action
  */
 function getHttpAction() {
@@ -11,7 +12,7 @@ function getHttpAction() {
 }
 
 /**
- * @description creates a localized URL
+ * Get a redirection URL
  * @param {Object} params - params object
  * @param {string} params.action - action
  * @param {string} params.siteID - site ID

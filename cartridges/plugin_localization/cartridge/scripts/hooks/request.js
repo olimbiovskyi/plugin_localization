@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * Identify system request
  * @returns {boolean} is system request
  */
 function isSystemRequest() {
@@ -11,7 +12,6 @@ function isSystemRequest() {
 
 /**
  * On request hook
- *
  * @returns {dw.system.Status} Status
  */
 function onRequest() {

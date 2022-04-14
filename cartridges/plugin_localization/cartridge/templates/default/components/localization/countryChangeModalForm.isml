@@ -32,7 +32,7 @@
                                 ${Resource.msg('localization.country', 'forms', null)}
                             </label>
                             <select type="text"
-                                class="form-control required js-country-select"
+                                class="custom-select form-control js-country-select"
                                 required
                                 <isprint value="${pdict.forms.localization.country.attributes}" encoding="off" />
                             >
@@ -55,7 +55,7 @@
                                 ${Resource.msg('localization.language', 'forms', null)}
                             </label>
                             <select type="text"
-                                class="form-control required js-language-select"
+                                class="custom-select form-control js-language-select"
                                 required
                                 ${Number(pdict.forms.localization.language.options.length) === 1 ? 'disabled': ''}
                                 <isprint value="${pdict.forms.localization.language.attributes}" encoding="off" />
@@ -79,7 +79,7 @@
                                 ${Resource.msg('localization.currency', 'forms', null)}
                             </label>
                             <select type="text"
-                                class="form-control required js-currency-select"
+                                class="custom-select form-control js-currency-select"
                                 required
                                 ${Number(pdict.forms.localization.currency.options.length) === 1 ? 'disabled': ''}
                                 <isprint value="${pdict.forms.localization.currency.attributes}" encoding="off" />
@@ -129,13 +129,15 @@
 
                     <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}" />
 
-                    <button
-                        type="submit"
-                        name="save"
-                        class="btn btn-primary"
-                    >
-                        ${Resource.msg('localization.modal.btn.change', 'locale', null)}
-                    </button>
+                    <div class="col">
+                        <button
+                            type="submit"
+                            name="save"
+                            class="btn btn-primary"
+                        >
+                            ${Resource.msg('localization.modal.btn.change', 'locale', null)}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -26,6 +26,7 @@ function getCookie(name) {
 }
 
 /**
+ * Set cookie
  * @param {string} name - cookie name
  * @param {*} value - cookie value
  * @param {Object} params - cookie time

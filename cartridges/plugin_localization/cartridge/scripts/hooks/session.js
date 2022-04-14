@@ -2,7 +2,6 @@
 
 /**
  * On sessiom hook
- *
  * @returns {dw.system.Status} Status
  */
 function onSession() {
@@ -24,16 +23,15 @@ function onSession() {
 
     var LocaleModel = require('*/cartridge/models/locale');
     var cookie = require('*/cartridge/scripts/util/cookie');
-
     var countryCode = cookie.getCookie('selectedCountry');
     var currencyCode = cookie.getCookie('selectedCurrency');
 
-    if (currencyCode) {
-        session.custom.selectedCurrency = currencyCode;
-    }
-
     if (!countryCode) {
         countryCode = request.geolocation.countryCode;
+    }
+
+    if (currencyCode) {
+        session.custom.selectedCurrency = currencyCode;
     }
 
     var countryConfig = LocaleModel.getCountryConfig(countryCode);

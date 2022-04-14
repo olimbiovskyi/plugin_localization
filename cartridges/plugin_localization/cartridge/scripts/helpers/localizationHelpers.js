@@ -1,9 +1,11 @@
 'use strict';
 
 /**
+ * Apply locale, currency and price books based country
  * @param {Object} params - params object
  * @param {Object} params.countryConfig - country configuration
  * @param {string} params.locale - locale
+ * @param {string} params.currencyCode - currency code
  */
 function applyPreferences(params) {
     var countryConfig = params.countryConfig;
@@ -39,11 +41,12 @@ function applyPreferences(params) {
 }
 
 /**
- * @description session attrbites help to create dynamic customer groups
+ * Save session attributes for creating dynamic customer groups
  * @param {Object} params - params object
  * @param {string} params.country - country
  * @param {string} params.locale - locale
  * @param {string} params.siteID - site ID
+ * @param {string} params.currencyCode - currency code
  */
 function saveLocalizationConfigs(params) {
     var cookie = require('*/cartridge/scripts/util/cookie');
@@ -69,7 +72,7 @@ function saveLocalizationConfigs(params) {
 }
 
 /**
- * @description apply localization settings for site
+ * Save localization preferences based on request
  */
 function setLocalizationPreferences() {
     var LocaleModel = require('*/cartridge/models/locale');
@@ -96,7 +99,7 @@ function setLocalizationPreferences() {
 }
 
 /**
- * @description populate localization form
+ * Populates localization form
  * @param {Oject} form - session form
  */
 function fillCountriesOptions(form) {

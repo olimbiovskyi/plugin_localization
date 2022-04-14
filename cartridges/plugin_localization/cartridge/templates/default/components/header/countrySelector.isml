@@ -1,9 +1,11 @@
-<div class="dropdown country-selector js-change-country"
+<button type="button"
+    class="country-selector-btn js-change-country"
+    data-toggle="modal"
+    data-target="#countryChangeModal"
     data-url="${URLUtils.url('Page-GetLocalizationForm')}"
-    tabindex="0"
 >
-    <span>
+    <span aria-hidden="true">
         <i class="flag-icon flag-icon-${pdict.locale.countryCode.toLowerCase()}"></i>
         ${pdict.locale.displayCountry} (${pdict.locale.displayLanguage})
     </span>
-</div>
+</button>

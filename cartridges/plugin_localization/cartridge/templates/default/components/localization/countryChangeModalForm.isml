@@ -1,14 +1,16 @@
-<div class="modal fade show js-country-change-modal"
+<div id="#countryChangeModal"
+    class="modal fade js-country-change-modal"
     tabindex="-1"
     role="dialog"
-    aria-modal="true"
-    style="display: block"
+    aria-labelledby="countryChangeModalLabel"
 >
-    <div class="modal-dialog">
+    <div class="modal-dialog"
+        role="document"
+    >
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">
+                <h2 class="modal-title" id="countryChangeModalLabel">
                     ${Resource.msg('localization.modal.header', 'locale', '')}
                 </h2>
                 <button type="button"
@@ -91,7 +93,7 @@
                     <button
                         type="submit"
                         name="save"
-                        class="decline btn btn-primary"
+                        class="btn btn-primary"
                     >
                         ${Resource.msg('localization.modal.btn.change', 'locale', null)}
                     </button>

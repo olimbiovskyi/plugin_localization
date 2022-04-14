@@ -18,21 +18,24 @@ function applyPreferences(params) {
 
     request.setLocale(params.locale);
 
+    var siteCurrencies = Site.current.allowedCurrencies;
+    var currencyCode = params.currencyCode;
+
+    if (siteCurrencies.indexOf(currencyCode) !== -1) {
+        session.setCurrency(Currency.getCurrency(currencyCode));
+    }
+
     var priceBooks = countryConfig.priceBooks.reduce(function (result, priceBookID) {
-        var pricebook = PriceBookMgr.getPriceBook(priceBookID);
-        if (pricebook) {
-            result.push(pricebook);
+        var priceBook = PriceBookMgr.getPriceBook(priceBookID);
+
+        if (priceBook && priceBook.currencyCode === currencyCode) {
+            result.push(priceBook);
         }
+
         return result;
     }, []);
 
     PriceBookMgr.setApplicablePriceBooks.apply(PriceBookMgr, priceBooks);
-
-    var siteCurrencies = Site.current.allowedCurrencies;
-
-    if (siteCurrencies.indexOf(countryConfig.currencyCode) !== -1) {
-        session.setCurrency(Currency.getCurrency(countryConfig.currencyCode));
-    }
 }
 
 /**
@@ -47,14 +50,17 @@ function saveLocalizationConfigs(params) {
 
     if (params.country) {
         session.custom.countryCode = params.country;
-
         cookie.setCookie('selectedCountry', params.country);
     }
 
     if (params.locale) {
         session.custom.selectedLocale = params.locale;
-
         cookie.setCookie('selectedLocale', params.locale);
+    }
+
+    if (params.currencyCode) {
+        session.custom.selectedCurrency = params.currencyCode;
+        cookie.setCookie('selectedCurrency', params.currencyCode);
     }
 
     if (params.siteID) {
@@ -68,16 +74,24 @@ function saveLocalizationConfigs(params) {
 function setLocalizationPreferences() {
     var LocaleModel = require('*/cartridge/models/locale');
     var localeModel = new LocaleModel();
+    var countryConfig = localeModel.countryConfig;
+    var currencyCode = session.custom.selectedCurrency;
+
+    if (!currencyCode) {
+        currencyCode = countryConfig.currencies[0];
+    }
 
     applyPreferences({
-        countryConfig: localeModel.countryConfig,
-        locale: request.locale
+        countryConfig: countryConfig,
+        locale: request.locale,
+        currencyCode: currencyCode
     });
 
     saveLocalizationConfigs({
         country: localeModel.locale.countryCode,
         locale: localeModel.locale.id,
-        siteID: localeModel.locale.siteID
+        siteID: localeModel.locale.siteID,
+        currencyCode: currencyCode
     });
 }
 
@@ -93,17 +107,20 @@ function fillCountriesOptions(form) {
 
     var countryField = form.country;
     var languageField = form.language;
+    var currencyField = form.currency;
     var allLanguagesField = form.allLanguages;
+    var allCurrenciesField = form.allCurrencies;
 
     var countryOptions = new ArrayList();
     var localeOptions = new ArrayList();
+    var currencyOptions = new ArrayList();
     var currentLocaleOptions = new ArrayList();
+    var currentCurrencyOptions = new ArrayList();
 
     for (var i = 0; i < countriesConfig.length; i++) {
         var countryConfig = countriesConfig[i];
         var isSessionCountry = countryConfig.countryCode === session.custom.countryCode;
 
-        // eslint-disable-next-line no-loop-func
         countryConfig.locales.forEach(function (locale) {
             var countryLocale = Locale.getLocale(locale);
             var localeOption = {
@@ -124,6 +141,25 @@ function fillCountriesOptions(form) {
             }
         });
 
+        countryConfig.currencies.forEach(function (currency) {
+            var currencyOption = {
+                ID: currency,
+                name: currency,
+                value: currency,
+                id: countryConfig.countryCode
+            };
+
+            currencyOptions.push(currencyOption);
+
+            if (isSessionCountry) {
+                currentCurrencyOptions.push(currencyOption);
+
+                if (currency === session.custom.selectedCurrency) {
+                    currencyField.setValue(currency);
+                }
+            }
+        });
+
         if (isSessionCountry) {
             countryField.setValue(countryConfig.countryCode);
         }
@@ -136,8 +172,10 @@ function fillCountriesOptions(form) {
     }
 
     countryField.setOptions(countryOptions.iterator());
-    allLanguagesField.setOptions(localeOptions.iterator());
     languageField.setOptions(currentLocaleOptions.iterator());
+    allLanguagesField.setOptions(localeOptions.iterator());
+    currencyField.setOptions(currentCurrencyOptions.iterator());
+    allCurrenciesField.setOptions(currencyOptions.iterator());
 }
 
 module.exports = {

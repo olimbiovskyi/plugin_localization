@@ -117,8 +117,7 @@ function fillCountriesOptions(form) {
     var currentLocaleOptions = new ArrayList();
     var currentCurrencyOptions = new ArrayList();
 
-    for (var i = 0; i < countriesConfig.length; i++) {
-        var countryConfig = countriesConfig[i];
+    countriesConfig.forEach(function (countryConfig) {
         var isSessionCountry = countryConfig.countryCode === session.custom.countryCode;
 
         countryConfig.locales.forEach(function (locale) {
@@ -169,7 +168,7 @@ function fillCountriesOptions(form) {
             name: countryConfig.name,
             value: countryConfig.countryCode
         });
-    }
+    });
 
     countryField.setOptions(countryOptions.iterator());
     languageField.setOptions(currentLocaleOptions.iterator());

@@ -27,7 +27,7 @@ In the Business Manager, go to **Merchant Tools > Custom Objects > Custom Object
 |Host Name [optional]|mybrand.ca|This field is used for multiple host names|
 |Redirect URL [optional]|shop.legacy.com/ca|This field is used for redirection to legacy site locale|
 
-## UI
+## Localization UI
 ![Screenshot_1](https://user-images.githubusercontent.com/35340938/163681843-c2b0b296-6493-4d31-9bc4-e73f13065c4a.png)
 
 ## Cartridge Path Considerations

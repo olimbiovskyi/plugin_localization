@@ -3,7 +3,7 @@
     <custom-type type-id="CountryConfig">
         <display-name xml:lang="x-default">Country Configuration</display-name>
         <description xml:lang="x-default">Object for localization settings</description>
-        <staging-mode>source-to-target</staging-mode>
+        <staging-mode>no-staging</staging-mode>
         <storage-scope>organization</storage-scope>
         <key-definition attribute-id="countryCode">
             <display-name xml:lang="x-default">Country Code</display-name>

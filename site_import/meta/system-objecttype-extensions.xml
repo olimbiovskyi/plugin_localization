@@ -2,33 +2,17 @@
 <metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
     <type-extension type-id="SitePreferences">
         <custom-attribute-definitions>
-            <attribute-definition attribute-id="csInboundRequestWhitelist">
-                <display-name xml:lang="x-default">Inbound Request Whitelist</display-name>
-                <type>set-of-string</type>
-                <mandatory-flag>false</mandatory-flag>
-                <externally-managed-flag>false</externally-managed-flag>
-            </attribute-definition>
             <attribute-definition attribute-id="csRemoveParameterNames">
                 <display-name xml:lang="x-default">Remove Parameter Names</display-name>
                 <type>set-of-string</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
             </attribute-definition>
-            <attribute-definition attribute-id="csIsRedirectToCustomerLocale">
-                <display-name xml:lang="x-default">Redirect to customer's locale</display-name>
-                <description xml:lang="x-default">Return a customer to the saved/geolocated country on session hook</description>
-                <type>boolean</type>
-                <mandatory-flag>false</mandatory-flag>
-                <externally-managed-flag>false</externally-managed-flag>
-                <default-value>false</default-value>
-            </attribute-definition>
         </custom-attribute-definitions>
         <group-definitions>
             <attribute-group group-id="Localization">
                 <display-name xml:lang="x-default">Localization Settings</display-name>
-                <attribute attribute-id="csIsRedirectToCustomerLocale" />
                 <attribute attribute-id="csRemoveParameterNames"/>
-                <attribute attribute-id="csInboundRequestWhitelist" />
             </attribute-group>
         </group-definitions>
     </type-extension>

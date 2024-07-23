@@ -1,10 +1,10 @@
 'use strict';
 
 var server = require('server');
-server.extend(module.superModule);
-
 var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
 var localization = require('*/cartridge/scripts/middleware/localization');
+
+server.extend(module.superModule);
 
 server.get(
     'GetLocalizationForm',
@@ -15,7 +15,7 @@ server.get(
 server.replace(
     'Locale',
     server.middleware.include,
-    localization.locale
+    localization.getlocale
 );
 
 server.replace(

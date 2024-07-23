@@ -5,8 +5,8 @@ var cache = CacheMgr.getCache('countriesData');
 var countriesConfig = cache.get('countries', getCountriesConfig);
 
 /**
- * @description build country configurations based on custom objects
- * @returns {Array} configurations
+ * Get normalized array based on custom objects
+ * @returns {Array} normalized countries array
  */
 function getCountriesConfig() {
     var CustomObjectMgr = require('dw/object/CustomObjectMgr');
@@ -20,7 +20,7 @@ function getCountriesConfig() {
             countryCode: country.custom.countryCode,
             name: country.custom.name,
             siteID: country.custom.siteID,
-            currencyCode: country.custom.currencyCode,
+            currencies: [].slice.apply(country.custom.currencies),
             locales: [].slice.apply(country.custom.locales),
             priceBooks: [].slice.apply(country.custom.priceBooks),
             hostName: country.custom.hostName || '',

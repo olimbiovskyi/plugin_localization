@@ -8,7 +8,7 @@ var server = require('server');
  * @param {Function} next - Next call in the middleware chain
  * @returns {void}
  */
-function locale(req, res, next) {
+function getlocale(req, res, next) {
     var LocaleModel = require('*/cartridge/models/locale');
     var localeModel = new LocaleModel();
 
@@ -35,11 +35,11 @@ function setLocale(req, res, next) {
     var localizationForm = server.forms.getForm('localization');
     var countryCode = localizationForm.country.value;
     var locale = localizationForm.language.value;
+    var currency = localizationForm.currency.value;
     var countryConfig = LocaleModel.getCountryConfig(countryCode);
 
     if (countryConfig.redirectURL) {
         res.json({
-            success: true,
             redirectUrl: countryConfig.redirectURL
         });
 
@@ -49,6 +49,12 @@ function setLocale(req, res, next) {
     if (!locale || countryConfig.locales.indexOf(locale) === -1) {
         locale = countryConfig.locales[0];
     }
+
+    if (!currency || countryConfig.currencies.indexOf(currency) === -1) {
+        currency = countryConfig.currencies[0];
+    }
+
+    session.custom.selectedCurrency = currency;
 
     var requestHelpers = require('*/cartridge/scripts/helpers/requestHelpers');
 
@@ -61,7 +67,6 @@ function setLocale(req, res, next) {
     });
 
     res.json({
-        success: true,
         redirectUrl: redirectURL.toString()
     });
 
@@ -89,7 +94,7 @@ function getLocalizationForm(req, res, next) {
 }
 
 module.exports = {
-    locale: locale,
+    getlocale: getlocale,
     setLocale: setLocale,
     getLocalizationForm: getLocalizationForm
 };

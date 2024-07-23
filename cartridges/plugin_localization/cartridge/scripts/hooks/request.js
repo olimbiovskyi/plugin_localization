@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * Identify system request
  * @returns {boolean} is system request
  */
 function isSystemRequest() {
@@ -11,13 +12,12 @@ function isSystemRequest() {
 
 /**
  * On request hook
- *
  * @returns {dw.system.Status} Status
  */
 function onRequest() {
     var Status = require('dw/system/Status');
 
-    if (request.custom.onRequestIgnore || request.includeRequest || isSystemRequest()) {
+    if (request.includeRequest || isSystemRequest()) {
         return new Status(Status.OK);
     }
 
@@ -28,4 +28,6 @@ function onRequest() {
     return new Status(Status.OK);
 }
 
-exports.onRequest = onRequest;
+module.exports = {
+    onRequest: onRequest
+};

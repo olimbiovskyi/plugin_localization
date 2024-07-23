@@ -1,8 +1,15 @@
-<li class="menu-item dropdown country-selector d-md-none js-change-country"
+<li class="menu-item d-md-none js-change-country"
     data-url="${URLUtils.url('Page-GetLocalizationForm')}"
 >
-    <span class="btn dropdown-toggle">
-        <i class="flag-icon flag-icon-${pdict.locale.countryCode.toLowerCase()}"></i>
-        ${pdict.locale.displayCountry} (${pdict.locale.displayLanguage})
-    </span>
+    <button type="button"
+        class="country-selector-btn js-change-country"
+        data-toggle="modal"
+        data-target="#countryChangeModal"
+        data-url="${URLUtils.url('Page-GetLocalizationForm')}"
+    >
+        <span aria-hidden="true">
+            <i class="flag-icon flag-icon-${pdict.locale.countryCode.toLowerCase()}"></i>
+            ${pdict.locale.displayCountry} (${pdict.locale.displayLanguage})
+        </span>
+    </button>
 </li>

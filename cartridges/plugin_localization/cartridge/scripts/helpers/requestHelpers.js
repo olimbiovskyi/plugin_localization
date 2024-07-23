@@ -1,6 +1,7 @@
 'use strict';
 
 /**
+ * Get current http action
  * @returns {string} http action
  */
 function getHttpAction() {
@@ -11,6 +12,7 @@ function getHttpAction() {
 }
 
 /**
+ * Get a redirection URL
  * @param {Object} params - params object
  * @param {string} params.action - action
  * @param {string} params.siteID - site ID
@@ -36,23 +38,28 @@ function getRedirectUrl(params) {
 
     urlParams.push(urlAction);
 
+    var parametersToRemove = Site.current.getCustomPreferenceValue('csRemoveParameterNames');
+
     (queryString || '').split('&').forEach(function (pair) {
         var parts = pair.split('=');
 
-        if (parts[0] !== 'lang') {
+        if (parametersToRemove.indexOf(parts[0]) === -1) {
             urlParams.push(new URLParameter(parts[0], Encoding.fromURI(parts[1])));
         }
     });
 
     var redirectURL = URLUtils.abs.apply(URLUtils, urlParams);
     var isDifferentHostName = request.httpHost !== hostName;
+    var isSameSite = siteID === session.custom.selectedSite;
 
-    if (isDifferentHostName && (siteID === session.custom.selectedSite)) {
+    if (isDifferentHostName && isSameSite) {
         redirectURL = URLUtils.sessionRedirect(hostName, redirectURL);
     }
 
     return redirectURL;
 }
 
-module.exports.getHttpAction = getHttpAction;
-module.exports.getRedirectUrl = getRedirectUrl;
+module.exports = {
+    getHttpAction: getHttpAction,
+    getRedirectUrl: getRedirectUrl
+};

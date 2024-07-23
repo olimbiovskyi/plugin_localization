@@ -3,21 +3,21 @@
     <custom-type type-id="CountryConfig">
         <display-name xml:lang="x-default">Country Configuration</display-name>
         <description xml:lang="x-default">Object for localization settings</description>
-        <staging-mode>source-to-target</staging-mode>
+        <staging-mode>no-staging</staging-mode>
         <storage-scope>organization</storage-scope>
         <key-definition attribute-id="countryCode">
+            <display-name xml:lang="x-default">Country Code</display-name>
             <type>string</type>
             <min-length>0</min-length>
         </key-definition>
         <attribute-definitions>
-            <attribute-definition attribute-id="currencyCode">
-                <display-name xml:lang="x-default">Currency Code</display-name>
-                <description xml:lang="x-default">The currency code on the site</description>
-                <type>string</type>
+            <attribute-definition attribute-id="currencies">
+                <display-name xml:lang="x-default">Currencies</display-name>
+                <description xml:lang="x-default">The list of available currencies on the site</description>
+                <type>set-of-string</type>
                 <localizable-flag>false</localizable-flag>
-                <mandatory-flag>true</mandatory-flag>
+                <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
-                <min-length>0</min-length>
             </attribute-definition>
             <attribute-definition attribute-id="hostName">
                 <display-name xml:lang="x-default">Host Name</display-name>
@@ -47,7 +47,7 @@
             </attribute-definition>
             <attribute-definition attribute-id="priceBooks">
                 <display-name xml:lang="x-default">Price Books</display-name>
-                <description xml:lang="x-default">The list of price books available on the site</description>
+                <description xml:lang="x-default">The list of applicable price books</description>
                 <type>set-of-string</type>
                 <localizable-flag>false</localizable-flag>
                 <mandatory-flag>true</mandatory-flag>
@@ -80,8 +80,8 @@
                 <attribute attribute-id="name"/>
                 <attribute attribute-id="siteID"/>
                 <attribute attribute-id="locales"/>
-                <attribute attribute-id="currencyCode"/>
                 <attribute attribute-id="priceBooks"/>
+                <attribute attribute-id="currencies"/>
                 <attribute attribute-id="hostName"/>
                 <attribute attribute-id="redirectURL"/>
             </attribute-group>

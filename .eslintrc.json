@@ -1,6 +1,19 @@
 {
     "root": true,
     "extends": "airbnb-base/legacy",
+    "globals" : {
+        "session": true,
+        "request": true,
+        "response": true,
+        "customer": true,
+        "empty": true,
+        "webreferences": true,
+        "webreferences2": true,
+        "PIPELET_NEXT": true,
+        "PIPELET_ERROR": true,
+        "XML": true,
+        "dw": true
+    },
     "rules": {
         "import/no-unresolved": "off",
         "no-use-before-define": "off",
@@ -16,19 +29,7 @@
         "operator-linebreak": "error",
         "no-else-return": "error",
         "no-param-reassign": ["error", { "props": false }],
-        "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1, "maxBOF": 1 } ]
-    },
-    "globals" : {
-      "session": true,
-      "request": true,
-      "response": true,
-      "customer": true,
-      "empty": true,
-      "webreferences": true,
-      "webreferences2": true,
-      "PIPELET_NEXT": true,
-      "PIPELET_ERROR": true,
-      "XML": true,
-      "dw": true
+        "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 1, "maxBOF": 1 } ],
+        "no-loop-func": "off"
     }
 }
